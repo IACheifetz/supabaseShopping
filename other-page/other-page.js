@@ -40,6 +40,17 @@ async function fetchAndDisplayItems() {
 
         listItemEl.textContent = `${listItem.amount} ${listItem.item_name}`;
 
+        if (listItem.is_bought){
+            listItemEl.classList.add('is-bought');
+        } else {
+            listItemEl.addEventListener('click', async () => {
+                await buyItem(listItem.id);
+    
+                fetchAndDisplayItems();
+            });
+        }
+        
+
         listEl.append(listItemEl);
     }
 }
