@@ -25,3 +25,11 @@ Additional considerations:
 -   Is there some state we need to initialize?
 -   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be resused?)
 arbitrary change
+
+![wireframe for shopping list app](/assets/wireframe.png “wireframe for shopping list app”)
+
+ -create supabase table and import it in fetch utils
+ -set up signed in page html to have form, delete button and container div for list
+ -add events for form submission to add items
+ -add events for crossing out items when clicked
+ add events for deleting list when button is clicked
