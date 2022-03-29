@@ -5,6 +5,7 @@ checkAuth();
 const logoutButton = document.getElementById('logout');
 const formEl = document.querySelector('form');
 const listEl = document.querySelector('.shopping-list');
+const deleteButton = document.getElementById('delete-list');
 
 
 logoutButton.addEventListener('click', () => {
@@ -22,6 +23,8 @@ formEl.addEventListener('submit', async (e) => {
         is_bought: false,
     });
 
+    formEl.reset();
+
     await fetchAndDisplayItems();
 });
 
@@ -31,7 +34,9 @@ async function fetchAndDisplayItems() {
     const shoppingList = await getShoppingList();
 
     for (let listItem of shoppingList) {
-        const listItemEl = document.createElement('p');
+        const listItemEl = document.createElement('h3');
+
+        listItemEl.classList.add('list-item');
 
         listItemEl.textContent = `${listItem.amount} ${listItem.item_name}`;
 
@@ -41,4 +46,10 @@ async function fetchAndDisplayItems() {
 
 window.addEventListener('load', () => {
     fetchAndDisplayItems();
+});
+
+deleteButton.addEventListener('click', async () => {
+    await deleteShoppingList();
+
+    await fetchAndDisplayItems();
 });

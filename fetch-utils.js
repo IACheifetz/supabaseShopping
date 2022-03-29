@@ -49,11 +49,13 @@ export async function getShoppingList() {
     return response.body;
 }
 
-export async function deleteShoppingList(id) {
+export async function deleteShoppingList() {
+    const user = getUser();
+
     const response = await client
         .from('shopping_list_items')
         .delete()
-        .match({ id });
+        .match({ user_id: user.id });
 
     return response.body;
 
