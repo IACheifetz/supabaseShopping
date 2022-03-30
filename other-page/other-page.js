@@ -1,4 +1,5 @@
 import { checkAuth, logout, getShoppingList, deleteShoppingList, buyItem, createListItem } from '../fetch-utils.js';
+import { renderItem } from '../render-utils.js';
 
 checkAuth();
 
@@ -34,11 +35,7 @@ async function fetchAndDisplayItems() {
     const shoppingList = await getShoppingList();
 
     for (let listItem of shoppingList) {
-        const listItemEl = document.createElement('h3');
-
-        listItemEl.classList.add('list-item');
-
-        listItemEl.textContent = `${listItem.amount} ${listItem.item_name}`;
+        const listItemEl = await renderItem(listItem);
 
         if (listItem.is_bought){
             listItemEl.classList.add('is-bought');
