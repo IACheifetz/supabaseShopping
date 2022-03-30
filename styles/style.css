@@ -129,3 +129,8 @@ footer {
 .auth-container button {
     margin: 10px;
 }
+
+.is-bought {
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
